@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HomePage</title>
+<script src="JS/utils.js" charset="utf-8" defer></script>
+<script src="JS/HomeManagement.js" charset="utf-8" defer></script>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css" />
+
+</head>
+<body>
+  <div class="list" id="folders" >
+      <h1 class="welcome" id="welcome"></h1>
+      <ul id="folderTree">
+  
+      </ul>
+      <p id ="err" class="error"></p><br><br>
+      <h2 id = "bin">Recycle Bin</h2>
+   </div>
+   
+  <div id="folderContent" class="list">
+  
+      <h1 id="folderName"></h1>
+      <ul id="subfolders">
+      
+      </ul>
+      
+      <h2 id = "DocumentsTitle"></h2>
+      <ul id="docs">
+      
+      </ul>
+ 
+  </div>
+  <div class="info" id="docinfo" >
+       <h1 id="docName"></h1>
+       <p id="folder"></p>
+       <p id="author"></p>
+       <p id="type"></p>
+       <p id="date"></p>
+       <p id="sum"></p>
+  </div>
+  <h1 class="logout" id="logout">Logout</h1>
+  <p id="navigateToHome" class = "navigate"></p>
+  <p id="back" class = "navigate"></p>
+</body>
+<div id="docForm" hidden = "true" >
+      <form action="#" class="userform">
+	   <fieldset>
+		    Name: <input type="text" name="docname" required> <br><br>
+		    Type: <select name="type" id="type" required>
+                     <option value="pdf">pdf</option>
+                     <option value="doc">doc</option>
+                     <option value="txt">txt</option>
+                     <option value="xlsm">xlsm</option>
+                     <option value="html">html</option>
+                     <option value="pptx">pptx</option>
+                 </select><br><br>
+            Summary:  <input type="text" name="sum" required> <br><br>
+		    <input id="newDoc" type="button" value="submit"><br>
+	   </fieldset>
+	   </form>  
+      
+</div>
+</html>

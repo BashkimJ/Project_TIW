@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login page</title>
+<script src="JS/utils.js" charset="utf-8" defer></script>
+<script src="JS/loginManagement.js" charset="utf-8" defer></script>
+<script src="JS/registrationManagement.js" charset="utf-8" defer></script>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css">
+</head>
+<body>
+   <div id="Login">
+	<h1 class="welcome">Welcome Back</h1>
+
+	<form action="#" class="userform">
+	<fieldset>
+		UserName: <input type="text" name="username"  required> <br><br>
+		Password: <input type="password" name="password" required><br><br>
+		<input id="loginbutton" type="button" value="login"><br>
+		<p id="errorMsg" class="error"></p><br>
+		<a href="#">Register</a>
+	</fieldset></form>
+   </div>
+   
+   <div id="Registration" hidden = "true">
+    <h1 class="welcome">Please fill out the form to proceed!</h1>
+    <form action="#" class="userformReg">
+	<fieldset>
+	    Email: <input type="text" name="email" required><br><br>
+		UserName: <input type="text" name="username" required> <br><br>
+		Password: <input type="password" name="password" required><br><br>
+		Repeat Password:  <input type="password" name="reppassword" required><br><br>
+		<input id="regbutton" type="button" value="Register" required><br>
+		<p id="errorMsg" class="error"></p><br>
+		<a href="#">Login</a>
+	</fieldset></form>
+  </div>
+</body>
+</html>
