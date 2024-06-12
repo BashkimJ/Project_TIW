@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+<h1 th:if="${doc}==null" th:class="welcome"><span th:text="'Welcome Back ' + ${username}"></span></h1><br>
+<h1 th:unless="${doc}==null" th:class="welcome"><span th:text=" 'You are moving document: ' + ${doc.name}"></span></h1><br>
+<hr th:class="line">
+<a th:href="@{Logout}" th:class="logout">Logout</a><br><br><br>
+<div th:class="list">
+
+  <ul th:if="${doc}==null" >
+          <li th:each="folder : ${rootFolders}"
+                   th:insert="@{WEB-INF/fragment.html}:: list(folder)"></li>
+                   
+  </ul>
+  <ul  th:unless="${doc}==null">
+          <li th:each="folder : ${rootFolders}"
+                   th:insert="@{WEB-INF/fragment.html}:: listchoice(folder,${doc})"></li>
+                   
+  </ul>
+  </div>
+  <a th:href="@{GoToManageContentPage}" th:class="navigate">Add Folder/Document</a>
+</body>
+</html>

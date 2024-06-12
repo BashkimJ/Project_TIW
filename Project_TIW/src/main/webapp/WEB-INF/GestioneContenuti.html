@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Content Manager</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+<h1>Add folder</h1>
+<form th:action="@{AddFolder}" method="post">
+    <label for="foldername">Name:   </label>
+    <input type="text" name="foldername" id="foldername" required><br><br>
+    <label for="subfolder">Choose folder(Home to create a root folder)  </label>
+    <select name="folder" id="folder" required>
+         <option value="-1">Home</option>
+         <option th:each="folder: ${folders}" th:value="${folder.getID()}" th:text="${folder.name} + '(' +  ${folder.getID()} + ')'"></option>
+    </select><br><br>
+    <p th:text="${errorFold}" th:class="error"></p>
+    <input type="submit" value="Add Folder">    
+</form><br><br>
+<h1>Add Document</h1>
+     <form th:action="@{AddDocument}" method="post">
+           <label for="docname">Name    </label>
+           <input type="text" name="docname" id="docname" required><br><br>
+           <label for="type">Type    </label>
+           <select name="type" id="type" required>
+                 <option value="pdf">pdf</option>
+                 <option value="doc">doc</option>
+                 <option value="txt">txt</option>
+                 <option value="xlsm">xlsm</option>
+                 <option value="html">html</option>
+                 <option value="pptx">pptx</option>
+           </select><br><br>
+           <label for="folder">Choose folder(Same folder can't contain a doc with the same name)    </label>
+           <select name="folder" id="folder" required>
+                  <option th:each="folder : ${folders}" th:value="${folder.getID()}" th:text="${folder.name}+ '(' +  ${folder.getID()} + ')'"></option>
+           </select><br><br>
+           <label for="summary">Summary(No more than 200 characters)</label><br>
+           <input type="text" name="summary" id="summary" maxlength="200" required><br><br>
+           <input type="submit" value="Add doc">
+           <p th:text="${errorDoc}" th:class="error" ></p>           
+     
+     </form><br><br><br>
+      <a th:href="@{/GoToHomePage}" th:class="navigate">Go Back to HomePage</a><br><br>
+     <a th:href="@{Logout}" th:class="logout">Logout</a>
+</body>
+</html>

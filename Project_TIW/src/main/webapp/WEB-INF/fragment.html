@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Fragment list(folder)</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+      <div th:fragment="list(folder)">
+           <div th:if="${folder.isTop==true}">
+                     <a th:href="@{/GetFolderContent(folderID=${folder.getID()})}"><span th:text="${folder.name}"></span></a><br>
+           </div>
+           
+           <ul th:if="${folder.isEmpty==false}">
+                 <li th:each="subfolder : ${folder.getSubFold()}">
+                 <a th:href="@{/GetFolderContent(folderID=${subfolder.getID()})}"><span th:text="${subfolder.name}"></span></a>
+                 <ul th:replace="this :: list(${subfolder})">
+                 </ul>
+                 </li>    
+           </ul>
+      </div>
+      
+      <div th:fragment="listchoice(folder,doc)">
+           <div th:if="${folder.isTop==true}">
+                 <div th:unless="${folder.getID()}==${doc.getFolder()}">
+                     <a th:href="@{/MoveToFolder(folderID=${folder.getID()}, docID=${doc.getID()})}"><span th:text="${folder.name}"></span></a>
+                 </div>
+                 <div th:if="${doc.getFolder()}==${folder.getID()}" th:class="action">
+                        <span th:text="${folder.name}" ></span><br>
+                 </div>
+           </div>
+           
+           <ul th:if="${folder.isEmpty==false}">
+                 <li th:each="subfolder : ${folder.getSubFold()}">
+                    <div th:unless="${doc.getFolder()}==${subfolder.getID()}">
+                       <a th:href="@{/MoveToFolder(folderID=${subfolder.getID()},docID=${doc.getID()})}"><span th:text="${subfolder.name}"></span></a>
+                    </div>
+                    <div th:if="${doc.getFolder()}==${subfolder.getID()}" th:class="action">
+                        <span th:text="${subfolder.name}" ></span>
+                    </div>   
+                       <ul th:replace="this :: listchoice(${subfolder},${doc})">
+                      </ul>
+                 </li>    
+           </ul>
+      </div>
+</body>
+</html>

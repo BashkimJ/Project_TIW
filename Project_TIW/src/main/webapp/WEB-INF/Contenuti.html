@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css" th:href="@{/css/mystyle.css}" />
+<meta charset="UTF-8">
+<title>Folder Contents</title>
+</head>
+<body>
+   <h1 th:text="${folder.name}"></h1>
+   <ul>
+          <li th:each="folder: ${folders}"><a th:href="@{/GetFolderContent(folderID=${folder.getID()})}"><span th:text="${folder.name}"></span></a>
+     
+   </ul><br><br>
+   <hr th:class="line">  
+   <h2 >Lista dei Documenti</h2>
+   <ul>
+        <li th:each="document : ${documents}"><span th:text="${document.getName() + '  ' }" ></span><a th:href="@{GetDocumentInfo(documentID=${document.getID()})}" th:class="action">>Access  </a> <a th:href="@{MoveDoc(documentID=${document.getID()})}" th:class="action">  >Move</a></li>
+   
+   </ul>
+ 
+   <p th:text="${empty}"></p>
+   <a th:href="@{GoToHomePage}" th:class="navigate">Go Back to HomePage</a><br><br>
+   <a th:href="@{Logout}" th:class="logout">Logout</a><br><br><br>
+</body>
+</html>

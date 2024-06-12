@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Document INFO</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+<div th:class="info">
+<h1 th:text="${doc.getName()}"></h1>
+<p>Folder:   <span th:text="${folder.name()}"></span></p>
+<p>Author:   <span th:text="${doc.getAuthor()}"></span></p>
+<p>Type:   <span th:text="${doc.getType()}"></span></p>
+<p>Creation Date:   <span th:text="${doc.getCreationDate()}"></span></p>
+<p>Summary:   <span th:text="${doc.Summary()}"></span></p><br><br><br>
+</div>
+<a th:href="@{/GetFolderContent(folderID=${doc.getFolder()})}" th:class="navigate">Go Back</a><br><br>
+<a th:href="@{/Logout}" th:class="logout">Logout</a>
+</body>
+</html>
